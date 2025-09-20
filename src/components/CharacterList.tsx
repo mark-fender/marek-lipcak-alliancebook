@@ -6,6 +6,13 @@ type CharacterListProps = {
 };
 
 export default function CharacterList({ characters }: CharacterListProps) {
+
+  if (characters.length === 0) {
+    return (
+      <p className='text-center mt-4'>Found no one, you have. Broaden your search, you must.</p>
+    );
+  }
+
   return (
     <section
       id='results'

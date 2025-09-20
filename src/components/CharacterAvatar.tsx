@@ -21,7 +21,7 @@ export default function CharacterAvatar({ character }: CharacterAvatarProps) {
         onError={(e) => {
           (e.currentTarget as HTMLImageElement).src = '/placeholder.png';
         }}
-        sizes='100vw'
+        sizes='(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw'
         priority
       />
     </div>
