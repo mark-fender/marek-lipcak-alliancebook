@@ -1,4 +1,4 @@
-import CharacterCard from '@/components/CharacterCard';
+import CharacterCard from '@/components/CharacterList/CharacterCard';
 import { Character } from '@/lib/api/types';
 
 type CharacterListProps = Readonly<{

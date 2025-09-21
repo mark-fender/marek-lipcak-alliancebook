@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Undo2 } from 'lucide-react';
 
-import SearchBar from '@/components/SearchBar';
+import SearchBar from '@/components/filters/SearchBar';
 
 import { Button } from '@/components/ui/button';
 import { isFormField } from '@/lib/utils/isFormField';
