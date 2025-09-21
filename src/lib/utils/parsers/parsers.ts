@@ -2,7 +2,7 @@ import {
   CharacterGenderFilter,
   CharacterStarshipFilter,
   CharacterSortOption,
-} from '@/types/FilterTypes';
+} from '@/lib/types/FilterTypes';
 import { normalizeParam } from '../noramlizeParam/normalizeParam';
 
 export function parseIdFromUrl(url: string | null): string | null {

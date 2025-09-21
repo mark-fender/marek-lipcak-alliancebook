@@ -2,10 +2,11 @@ import Header from '@/components/Header';
 import Pagination from '@/components/pagination/Pagination';
 import CharacterList from '@/components/CharacterList';
 import Filters from '@/components/filters/Filters';
-import { CharacterFilters } from '@/types/FilterTypes';
+import { CharacterFilters } from '@/lib/types/FilterTypes';
 import { parsePage, parseGender, parseStarship, parseSort } from '@/lib/utils/parsers/parsers';
 import { buildSearchParams } from '@/lib/utils/buildSearchParam/buildSearchParam';
 import { fetchCharacterPage } from '@/lib/api/characters';
+import CharacterStatistics from '@/components/CharactersStatistics/CharactersStatistics';
 
 type HomeProps = Readonly<{
   searchParams: Record<string, string | string[] | undefined>;
@@ -27,6 +28,7 @@ export default async function Home({ searchParams }: HomeProps) {
     <main className='mx-auto p-4'>
       <Header />
       <Filters query={params.query as string} filters={filters} />
+      <CharacterStatistics total={data.total} stats={data.statistics} />
       <CharacterList characters={data.results} />
       <Pagination
         page={data.page}

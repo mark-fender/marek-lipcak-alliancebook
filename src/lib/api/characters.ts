@@ -4,6 +4,7 @@ import { clampPage } from '../utils/clampPage/clampPage';
 import { fetchJson } from './base';
 import { applyFilters } from '../utils/filters/applyFilters';
 import { sortCharacters } from '../utils/sortCharactes/sortCharacters';
+import { calculateStatistics } from '../utils/calculateStatistics/calculateStatistics';
 
 export async function fetchCharacterPage({
   page,
@@ -26,6 +27,7 @@ export async function fetchCharacterPage({
     page: currentPage,
     pageCount,
     total,
+    statistics: calculateStatistics(filtered),
   };
 }
 

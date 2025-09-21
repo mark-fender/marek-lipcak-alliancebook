@@ -1,4 +1,4 @@
-import { CharacterFilters } from '@/types/FilterTypes';
+import { CharacterFilters } from '@/lib/types/FilterTypes';
 
 export function buildSearchParams(
   query: string,

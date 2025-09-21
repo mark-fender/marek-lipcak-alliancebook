@@ -1,5 +1,5 @@
 import { buildSearchParams } from './buildSearchParam';
-import { CharacterFilters } from '@/types/FilterTypes';
+import { CharacterFilters } from '@/lib/types/FilterTypes';
 
 describe('buildSearchParams', () => {
   it('should include the query in the params if provided', () => {

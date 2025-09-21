@@ -1,5 +1,5 @@
 import { Character } from '@/lib/api/types';
-import { CharacterFilters } from '@/types/FilterTypes';
+import { CharacterFilters } from '@/lib/types/FilterTypes';
 
 export function applyFilters(characters: Character[], filters: CharacterFilters): Character[] {
   const normalizedGender = filters.gender.toLowerCase();

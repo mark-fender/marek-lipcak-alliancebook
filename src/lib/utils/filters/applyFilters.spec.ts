@@ -1,6 +1,6 @@
 import { applyFilters } from './applyFilters';
 import { Character } from '@/lib/api/types';
-import { CharacterFilters } from '@/types/FilterTypes';
+import { CharacterFilters } from '@/lib/types/FilterTypes';
 
 describe('applyFilters', () => {
   const characters: Character[] = [

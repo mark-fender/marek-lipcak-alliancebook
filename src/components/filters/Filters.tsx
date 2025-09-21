@@ -9,7 +9,7 @@ import SearchBar from '@/components/SearchBar';
 import { Button } from '@/components/ui/button';
 import { isFormField } from '@/lib/utils/isFormField';
 import FilterSelect from './FilterSelect';
-import { CharacterFilters } from '@/types/FilterTypes';
+import { CharacterFilters } from '@/lib/types/FilterTypes';
 import { GENDER_OPTIONS, STARSHIP_OPTIONS, SORT_OPTIONS } from '@/lib/const';
 
 type FiltersProps = Readonly<{

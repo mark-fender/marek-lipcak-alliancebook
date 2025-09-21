@@ -2,7 +2,7 @@ import { sortCharacters } from './sortCharacters';
 import { compareStrings } from '../compareStrings/compareStrings';
 import { compareNumbers } from '../compareNumbers/compareNumbers';
 import { Character } from '@/lib/api/types';
-import { CharacterSortOption } from '@/types/FilterTypes';
+import { CharacterSortOption } from '@/lib/types/FilterTypes';
 
 jest.mock('../compareStrings/compareStrings', () => ({
   compareStrings: jest.fn(),

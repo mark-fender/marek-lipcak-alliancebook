@@ -1,4 +1,4 @@
-import { CharacterFilters } from '@/types/FilterTypes';
+import { CharacterFilters } from '@/lib/types/FilterTypes';
 
 export type SwapiList<T> = {
   count: number;
@@ -37,4 +37,12 @@ export type CharacterPage = {
   page: number;
   pageCount: number;
   total: number;
+  statistics: CharacterStatistics;
+};
+
+export type CharacterStatistics = {
+  averageHeight: number | null;
+  averageMass: number | null;
+  starshipPilots: number;
+  distinctHomeworlds: number;
 };

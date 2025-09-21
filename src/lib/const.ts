@@ -3,7 +3,7 @@ import {
   CharacterStarshipFilter,
   CharacterSortOption,
   CharacterFilters,
-} from '@/types/FilterTypes';
+} from '@/lib/types/FilterTypes';
 
 export const GENDER_OPTIONS: { value: CharacterGenderFilter; label: string }[] = [
   { value: 'any', label: 'All' },
