@@ -1,11 +1,7 @@
 import { Character, CharacterStatistics } from '@/lib/api/types';
+import { parseNumber } from '../parsers/parsers';
 
 export function calculateStatistics(characters: Character[]): CharacterStatistics {
-  const parseNumber = (value: string): number | null => {
-    const parsed = Number(value.replace(/,/g, '').trim());
-    return Number.isFinite(parsed) ? parsed : null;
-  };
-
   const heights = characters
     .map((character) => parseNumber(character.height))
     .filter((value): value is number => value !== null);
