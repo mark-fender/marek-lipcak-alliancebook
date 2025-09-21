@@ -4,9 +4,9 @@ import Image from 'next/image';
 import type { Character } from '@/lib/api/types';
 import { getCharacterAvatarUrl } from '@/lib/utils/getCharacterAvatar/getCharacterAvatar';
 
-type CharacterAvatarProps = {
+type CharacterAvatarProps = Readonly<{
   readonly character: Character;
-};
+}>;
 
 export default function CharacterAvatar({ character }: CharacterAvatarProps) {
   const avatar = getCharacterAvatarUrl(character);

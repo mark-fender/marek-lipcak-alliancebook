@@ -1,9 +1,10 @@
 import { Character } from '@/lib/api/types';
 import { getCharacterAvatarUrl } from './getCharacterAvatar';
 
-jest.mock('./parseIdFromUrl/parseIdFromUrl', () => ({
+jest.mock('../parsers/parsers', () => ({
   parseIdFromUrl: jest.fn((url: string) => {
-    const match = url.match(/\/(\d+)\/$/);
+    const regex = /\/(\d+)\/$/;
+    const match = regex.exec(url);
     return match ? match[1] : null;
   }),
 }));
@@ -29,7 +30,7 @@ describe('getCharacterAvatarUrl', () => {
 
     const result = getCharacterAvatarUrl(character as Character);
     expect(result).toBe(
-      'https://vieraboschkova.github.io/swapi-gallery/static/assets/img/people/placeholder.jpg',
+      'https://vieraboschkova.github.io/swapi-gallery/static/assets/img/people/placeholder.png',
     );
   });
 

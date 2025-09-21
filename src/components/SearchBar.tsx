@@ -1,64 +1,55 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useRef, useEffect, useState } from 'react';
+import { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { Search } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 
-type SearchBarProps = { readonly initialQuery?: string };
+type SearchBarProps = Omit<ComponentPropsWithoutRef<'input'>, 'type'> & {
+  containerClassName?: string;
+};
 
-export default function SearchBar({ initialQuery = '' }: SearchBarProps) {
-  const router = useRouter();
-  const params = useSearchParams();
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | null>(null);
+const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
+  (
+    {
+      containerClassName = '',
+      className = '',
+      id = 'query',
+      placeholder = 'Find characters by name, e.g. Luke Skywalker',
+      ...rest
+    },
+    ref,
+  ) => {
+    return (
+      <div className={`flex flex-col gap-2 ${containerClassName}`}>
+        <label htmlFor={id} className='text-sm font-medium text-muted-foreground'>
+          Search characters
+        </label>
 
-  useEffect(() => {
-    const onSlash = (e: KeyboardEvent) => {
-      if (e.key === '/' && !(e.target instanceof HTMLInputElement)) {
-        e.preventDefault();
-        inputRef.current?.focus();
-      }
-    };
-    window.addEventListener('keydown', onSlash);
-    return () => window.removeEventListener('keydown', onSlash);
-  }, []);
+        <div className='relative'>
+          <Search
+            className='pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground'
+            aria-hidden='true'
+          />
+          <Input
+            id={id}
+            ref={ref}
+            type='search'
+            placeholder={placeholder}
+            autoComplete='off'
+            className={`pl-9 ${className}`}
+            {...rest}
+          />
+        </div>
 
-  const submit = (value: string) => {
-    const searchParams = new URLSearchParams(params);
-    if (value) {
-      searchParams.set('q', value);
-    } else {
-      searchParams.delete('q');
-    }
-    searchParams.delete('page');
-    router.push(`/?${searchParams.toString()}`);
-  };
-
-  const handleInputChange = (value: string) => {
-    if (searchTimeout) clearTimeout(searchTimeout);
-    setSearchTimeout(
-      setTimeout(() => {
-        submit(value);
-      }, 300),
+        <p className='mt-1 text-xs text-muted-foreground'>
+          Tip: press <kbd className='rounded border px-1 py-0.5 text-[0.75rem]'>/</kbd> to focus the
+          search field.
+        </p>
+      </div>
     );
-  };
+  },
+);
 
-  return (
-    <label className='block w-full md:w-80 mx-auto mb-6 mt-8' aria-label='Search characters'>
-      <span id='search-label' className='sr-only'>
-        Search for characters
-      </span>
-      <input
-        ref={inputRef}
-        defaultValue={initialQuery}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') submit((e.target as HTMLInputElement).value);
-        }}
-        onBlur={(e) => submit(e.currentTarget.value)}
-        onChange={(e) => handleInputChange(e.currentTarget.value)}
-        placeholder='Search (press / to focus)'
-        className='w-full rounded-xl border border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-50'
-        aria-labelledby='search-label'
-      />
-    </label>
-  );
-}
+SearchBar.displayName = 'SearchBar';
+
+export default SearchBar;

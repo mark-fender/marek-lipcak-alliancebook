@@ -1,3 +1,5 @@
+import { CharacterFilters } from '@/types/FilterTypes';
+
 export type SwapiList<T> = {
   count: number;
   next: string | null;
@@ -22,4 +24,17 @@ export type Character = {
   created: string;
   edited: string;
   url: string;
+};
+
+export type FetchCharacterPageParams = {
+  page: number;
+  query: string;
+  filters: CharacterFilters;
+};
+
+export type CharacterPage = {
+  results: Character[];
+  page: number;
+  pageCount: number;
+  total: number;
 };

@@ -1,9 +1,9 @@
 import CharacterAvatar from './CharacterAvatar';
 import type { Character } from '@/lib/api/types';
 
-type CharacterCardProps = {
-  readonly character: Character;
-};
+type CharacterCardProps = Readonly<{
+  character: Character;
+}>;
 
 export default function CharacterCard({ character }: CharacterCardProps) {
   return (

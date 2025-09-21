@@ -1,9 +1,9 @@
 import CharacterCard from '@/components/CharacterCard';
 import { Character } from '@/lib/api/types';
 
-type CharacterListProps = {
+type CharacterListProps = Readonly<{
   readonly characters: Character[];
-};
+}>;
 
 export default function CharacterList({ characters }: CharacterListProps) {
 
